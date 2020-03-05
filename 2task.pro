@@ -17,12 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     game_item.cpp \
+    game_item_cycle.cpp \
+    game_item_rect.cpp \
     game_scene.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     game_item.h \
+    game_item_cycle.h \
+    game_item_rect.h \
     game_scene.h \
     mainwindow.h
 

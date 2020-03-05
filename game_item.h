@@ -7,7 +7,7 @@
 class Game_Item : public QGraphicsRectItem//, public Game_Item_parent
 {
 public:
-    Game_Item(int x, int y, int w, int h);
+    Game_Item(int x, int y, int w, int h, QGraphicsItem *parent = 0);
     static int SquirRect(int w, float h);
 //    int PerimetrRect(int w, int h);
 };

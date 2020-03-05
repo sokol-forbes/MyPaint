@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     parent_item = new Game_Item(x, y, w, h);
+
     scene->addItem(parent_item);
 }
 
@@ -33,7 +34,7 @@ void MainWindow::myTimerRect(){
     if(this->mode == true && (buttonArray[1] == 1 || buttonArray[7] == 1))
     {
         if(mode == true){
-            parent_item->setTransformOriginPoint(parent_item->scale() + this->w / 2, parent_item->scale() + this->h / 2);
+            parent_item->setTransformOriginPoint(this->w / 2,this->h / 2);
             static int i = 0;
             parent_item->setRotation(i);
             buttonArray[1] == 1 ? i++ : i--;;
@@ -109,4 +110,24 @@ void MainWindow::on_pushButton_5_clicked()
     else{
         ui->label_2->setNum(this->w * this->h * parent_item->scale());
     }
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+   if(cycle){
+       delete cycle;
+   }
+   rect = new Game_Item_Rect(x - 10, y - 10, w + 10, h + 10, parent_item);
+   rect->setBrush(Qt::darkCyan);
+   rect->setPen(QPen(Qt::darkCyan));
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    if(rect){
+        delete rect;
+    }
+    cycle = new Game_Item_Cycle(x - 10, y - 10, w + 10, h + 10, parent_item);
+    cycle->setBrush(Qt::darkCyan);
+    cycle->setPen(QPen(Qt::darkCyan));
 }

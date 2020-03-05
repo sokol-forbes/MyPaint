@@ -6,6 +6,8 @@
 #include "game_item.h"
 #include <QTimer>
 #include <QTime>
+#include "game_item_rect.h"
+#include "game_item_cycle.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,7 +34,9 @@ private:
 public:
     QTimer *myRectTimer;
     Game_Scene *scene;
-    QGraphicsRectItem *parent_item;
+    Game_Item *parent_item;
+    Game_Item_Rect *rect;
+    Game_Item_Cycle *cycle;
 private slots:
     void myTimerRect();
     void on_pushButton_2_pressed();
@@ -44,5 +48,7 @@ private slots:
     void on_pushButton_7_pressed();
     void on_pushButton_7_released();
     void on_pushButton_5_clicked();
+    void on_pushButton_3_clicked();
+    void on_pushButton_clicked();
 };
 #endif // MAINWINDOW_H

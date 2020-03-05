@@ -104,30 +104,76 @@ void MainWindow::on_pushButton_7_released()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    if(this->w * this->h * parent_item->scale() < 0){
-    ui->label_2->setNum(Game_Item::SquirRect(this->w, this->h * parent_item->scale() * (-1))); //this->w * this->h * parent_item->scale() * (-1));
+    if(buttonArray[2]){
+        if(this->w * this->h * parent_item->scale() < 0){
+        ui->label_2->setNum(Game_Item::SquirRect((this->w + 10), (this->h + 10) * parent_item->scale() * (-1))); //this->w * this->h * parent_item->scale() * (-1));
+        }
+        else{
+            ui->label_2->setNum((this->w + 10) * (this->h + 10) * parent_item->scale());
+        }
     }
     else{
-        ui->label_2->setNum(this->w * this->h * parent_item->scale());
+        if(this->w * this->h * parent_item->scale() < 0){
+            ui->label_2->setNum(Game_Item::SquirCycle(w / 2 + 5, (h / 2 + 5) * parent_item->scale()) * (-1));
+        }
+        else{
+            ui->label_2->setNum(Game_Item::SquirCycle(w / 2 + 5, (h / 2 + 5) * parent_item->scale()));
+        }
     }
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
-   if(cycle){
+   if(buttonArray[0]) {
        delete cycle;
+       buttonArray[0] = 0;
+       rect = new Game_Item_Rect(x - 10, y - 10, w + 20, h + 20, parent_item);
+       rect->setBrush(Qt::darkCyan);
+       rect->setPen(QPen(Qt::darkCyan));
    }
-   rect = new Game_Item_Rect(x - 10, y - 10, w + 10, h + 10, parent_item);
-   rect->setBrush(Qt::darkCyan);
-   rect->setPen(QPen(Qt::darkCyan));
+   else
+       if(!buttonArray[2]) {
+           rect = new Game_Item_Rect(x - 10, y - 10, w + 20, h + 20, parent_item);
+           rect->setBrush(Qt::darkCyan);
+           rect->setPen(QPen(Qt::darkCyan));
+       }
+   buttonArray[2] = 1;
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    if(rect){
+    if(buttonArray[2]) {
         delete rect;
+        buttonArray[2] = 0;
+        cycle = new Game_Item_Cycle(x - 10, y - 10, w + 20, h + 20, parent_item);
+        cycle->setBrush(Qt::darkCyan);
+        cycle->setPen(QPen(Qt::darkCyan));
     }
-    cycle = new Game_Item_Cycle(x - 10, y - 10, w + 10, h + 10, parent_item);
-    cycle->setBrush(Qt::darkCyan);
-    cycle->setPen(QPen(Qt::darkCyan));
+    else
+        if(!buttonArray[0]) {
+            cycle = new Game_Item_Cycle(x - 10, y - 10, w + 20, h + 20, parent_item);
+            cycle->setBrush(Qt::darkCyan);
+            cycle->setPen(QPen(Qt::darkCyan));
+        }
+    buttonArray[0] = 1;
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    if(buttonArray[2]){
+        if(2 * ((this->w + 10) * parent_item->scale() + (this->h + 10) * parent_item->scale()) < 0){
+        ui->label_2->setNum(Game_Item::PerimetrRect((this->w + 10) * parent_item->scale(), (this->h + 10) * parent_item->scale() * (-1))); //this->w * this->h * parent_item->scale() * (-1));
+        }
+        else{
+            ui->label_2->setNum(Game_Item::PerimetrRect((this->w + 10) * parent_item->scale(), (this->h + 10) * parent_item->scale()));
+        }
+    }
+    else{
+        if(this->w * this->h * parent_item->scale() < 0){
+            ui->label_2->setNum(Game_Item::PerimetrCycle(w / 2 + 5, (h / 2 + 5) * parent_item->scale()) * (-1));
+        }
+        else{
+            ui->label_2->setNum(Game_Item::PerimetrCycle(w / 2 + 5, (h / 2 + 5) * parent_item->scale()));
+        }
+    }
 }

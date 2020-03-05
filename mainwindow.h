@@ -20,16 +20,29 @@ public:
     ~MainWindow();
 
     bool mode;
+    int buttonArray[8] = {0, 0, 0, 0, 0, 0, 0};
+    int x;
+    int y;
+    int w;
+    int h;
+
 
 private:
     Ui::MainWindow *ui;
 public:
     QTimer *myRectTimer;
     Game_Scene *scene;
-    QGraphicsRectItem *rect;
+    QGraphicsRectItem *parent_item;
 private slots:
-    void myTimerRect(bool &mode);
-    void on_pushButton_2_clicked();
+    void myTimerRect();
+    void on_pushButton_2_pressed();
     void on_pushButton_2_released();
+    void on_pushButton_8_pressed();
+    void on_pushButton_8_released();
+    void on_pushButton_6_pressed();
+    void on_pushButton_6_released();
+    void on_pushButton_7_pressed();
+    void on_pushButton_7_released();
+    void on_pushButton_5_clicked();
 };
 #endif // MAINWINDOW_H

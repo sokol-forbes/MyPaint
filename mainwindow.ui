@@ -85,7 +85,7 @@
            <string notr="true">Background-color : #00aae8</string>
           </property>
           <property name="text">
-           <string>Квадрат</string>
+           <string>Прямоугольник</string>
           </property>
          </widget>
         </item>
@@ -95,7 +95,7 @@
            <string notr="true">Background-color : #00aae8</string>
           </property>
           <property name="text">
-           <string>Круг</string>
+           <string>Еллипс</string>
           </property>
          </widget>
         </item>

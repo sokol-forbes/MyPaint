@@ -5,9 +5,11 @@
 #include "game_scene.h"
 #include "game_item.h"
 #include <QTimer>
+#include <QInputDialog>
 #include <QTime>
 #include "game_item_rect.h"
 #include "game_item_cycle.h"
+#include "set_coordinate.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,14 +25,17 @@ public:
 
     bool mode;
     int buttonArray[8] = {0, 0, 0, 0, 0, 0, 0};
-    int x;
-    int y;
-    int w;
-    int h;
+    float x;
+    float y;
+    float w;
+    float h;
+    float cx;
+    float cy;
 
 
 private:
     Ui::MainWindow *ui;
+    Set_Coordinate *window;
 public:
     QTimer *myRectTimer;
     Game_Scene *scene;
@@ -51,5 +56,7 @@ private slots:
     void on_pushButton_3_clicked();
     void on_pushButton_clicked();
     void on_pushButton_4_clicked();
+    void on_pushButton_11_clicked();
+    void on_pushButton_10_clicked();
 };
 #endif // MAINWINDOW_H

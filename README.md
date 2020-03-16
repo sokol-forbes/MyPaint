@@ -1,2 +1,1 @@
-"# MyPaint" 
-"# MyPaint" 
+#MyPaint 
